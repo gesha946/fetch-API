@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <meta charset = "UTF-8">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Отправка данных с помощью API</title>
+    </head>
+    <body>
+        <h1>Отправляем данные с помощью API</h1>
+        <form id="sendOrder">
+            <input type="number" name="id" id="id" placeholder="Введите ID товара" required>
+            <br>
+            <br>
+            <input type="text" name="name" id="name" placeholder="Введите наименование товара" required>
+            <br>
+            <br>
+            <input type="text" name="description" id="description" placeholder="Введите описание товара" required>
+            <br>
+            <br>
+            <button id="sendButton">Отправить</button>
+        </form>
+        <div id="orderInformation">
+            <p>Данные о товаре отправлены</p>
+        </div>
+        <script>
+            const orderInformation = document.getElementById("orderInformation");
+            const ID = document.getElementById('id');
+            const NAME = document.getElementById('name');
+            const DESCRIPTION = document.getElementById('description');
+            const SEND = document.getElementById('sendButton');
+            SEND.addEventListener("click", (event) => {
+                event.preventDefault();
+const orderID = ID.value;
+const orderName = NAME.value;
+const orderDescription = DESCRIPTION.value;
+if (orderID ==="" || orderName === "" || orderDescription === "") {
+    alert("Все поля обязательны для заполнения")
+} else {
+            fetch("http://localhost:3000/posts/", {
+                method: "POST", //Устанавливаем метод отправки
+                headers: {
+                    "content-Type": "applcation/json", //Формат данных, которые мы отправляем
+                },
+                body: JSON.stringify({ //Преобразукм обьект в строку
+                    name: `${orderName}`,
+                    id: orderID,
+                description: `${orderDescription}`,
+        }),
+    })
+    .then((response) => response.json())//Преобразовываем ответ сервера в обьект
+    .then((data) => {
+        orderInformation.innerHTML = `<p>Информация о товаре</p>
+        <p>ID товара: ${data.id}</p>
+        <p>Наименование товара: ${data.name}</p>
+        <p>Описание товара: ${data.description}</p>`
+    }) 
+.catch((error) => {
+    console.error("Ошибка:", error.message);
+});
+            }
+        });
+        </script>
+        </body>
+        </html>
