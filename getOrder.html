@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <meta charset = "UTF-8">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Полоучение данных с API</title>
+    </head>
+    <body>
+        <h1>Получить данные о товаре</h1>
+        <form action="" id="order_id_form">
+            <input type="text" name="id_order" id="id_order" placeholder="Введите ID  товара" required>
+            <br>
+            <br>
+            <button id="clickButton">Получить данные</button>
+        </form>
+        <div id="orderInfo">
+            <p>Информация о товаре</p>
+        </div>
+        <script>
+            const orderID = document.getElementById("orderID");
+            const orderName = document.getElementById("orderName");
+            const orderDescription = document.getElementById("orderDescription");
+            let order_form_id = document.getElementById("order_id_form");
+            const button = document.getElementById("clickButton");
+           
+            button.addEventListener("click", (event) => {
+                
+                event.preventDefault();
+             const idOrder = document.getElementById('id_order');
+             const ID = idOrder.value;
+if (ID === "") {
+    alert("Поле 'ID Товара' не может быть пустым")
+} else {
+ let url = new URL(`http://localhost:3000/posts/${ID}`)
+ fetch(`${url}`, {
+                method: "GET"
+             })
+             .then(response => response.json())
+             .then( data => orderInfo.innerHTML= `
+             <p>Информация о выбранном товаре:</p>
+             <p>ID товара: ${data.id}</p>
+             <p>Имя товара: ${data.name}</p>
+             <p>Описание товара: ${data.description}<p>`)
+             .catch(error => console.error('Ошибка получения данных:', error.message))
+            }
+        }
+    );
+        
+            
+          
+        </script>
+    </body>
+</html>

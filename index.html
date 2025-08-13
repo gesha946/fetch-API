@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <meta charset = "UTF-8">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Полоучение данных с API</title>
+    </head>
+    <body>
+     <h1 style="text-align: center;">Действия с товарами</h1>
+     <style>
+        .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-left: 500px;
+}
+
+
+        .button_get_data {
+    padding: 1px 6px;
+    border: 1px outset buttonborder;
+    border-radius: 3px;
+    color: rgb(58, 45, 45);
+    background-color: rgb(124, 202, 124);
+    text-decoration: none;
+    width: 250px;
+    text-align: center;
+
+    
+}
+.button_view_all_orders{
+    padding: 1px 6px;
+    border: 1px outset buttonborder;
+    border-radius: 3px;
+    color: rgb(58, 45, 45);
+    background-color: rgba(15, 233, 88, 0.671);
+    text-decoration: none;
+    width: 250px;
+    text-align: center;
+}
+.button_send_data {
+    padding: 1px 6px;
+    border: 1px outset buttonborder;
+    border-radius: 3px;
+    color: rgb(58, 45, 45);
+    background-color: rgb(104, 245, 104);
+    text-decoration: none;
+    width: 250px;
+    text-align: center;
+
+    
+}
+.button_change_data {
+    padding: 1px 6px;
+    border: 1px outset buttonborder;
+    border-radius: 3px;
+    color: rgb(58, 45, 45);
+    background-color: rgba(233, 211, 15, 0.671);
+    text-decoration: none;
+    width: 250px;
+    text-align: center;
+
+    
+}
+
+.button_delete_data {
+    padding: 1px 6px;
+    border: 1px outset buttonborder;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(235, 9, 9);
+    text-decoration: none;
+    width: 250px;
+    text-align: center;
+
+    
+}
+
+     </style>
+     <div class="buttons">
+        <a href="select-all-orders.html" class="button_view_all_orders">список товаров</a>
+        <a href="getOrder.html" class="button_get_data">Получить данные о товаре</a>
+        <a href="send-order.html" class="button_send_data">Загрузить новый товар</a>
+        <a href="changeOrder.html" class="button_change_data">Изменить данные о товаре</a>
+        <a href="delete-order.html" class="button_delete_data">Удалить товар</a>
+        </div>
+    </body>
+</html>
