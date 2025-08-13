@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <meta name="wievport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <head>
+        <title>Удалить товар из списка</title>
+    </head>
+    <body>
+        <h1>Удалить товар из списка</h1>
+        <form>
+            <label for="id_order">Укажите ID товара</label>
+            <input type="number" id="id_order" placeholder="Укажите ID товара" required>
+            <br>
+            <button id="deleteBtn">Удалить товар</button>
+        </form>
+        <div id="deleted"></div>
+        <script>
+            const idOrder = document.getElementById("id_order");
+            const deleteOrder = document.getElementById("deleteBtn");
+            deleteOrder.addEventListener("click", (event) => {
+
+                event.preventDefault();
+                let ID = idOrder.value;
+
+                let url = new URL(`http://localhost:3000/posts/${ID}`)
+ fetch(`${url}`, {
+                method: "DELETE"
+             })
+             .then(response => response.json())
+             .then( data => deleted.innerHTML= `Товар удален`)
+             .catch(error => console.error('Ошибка получения данных:', error.message))
+            })
+        </script>
+    </body>
+</html>
